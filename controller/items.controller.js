@@ -1,9 +1,14 @@
 const {Item} = require("../models")
 
 const getAllItems = async(req,res) => {
+    const pages = parseInt(req.query.pages) || 1
+    const perPage = parseInt(req.query.perPage) || 10
     try{
-        const items = await Item.findAll()
-        return res.json(items)
+        const items = await Item.findAll({
+            limit: perPage,
+            offset: (pages-1)*perPage
+        })
+        return res.json({pages, per_page: perPage, items})
     } catch (error) {
         console.log(error)
         return res.status(500).json({error: true, message: error.message})

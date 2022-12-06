@@ -11,21 +11,21 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-   let data = []
-   let amount = 10
-   while(amount--){
-    data.push({
-      uuid: faker.datatype.uuid(),
-      name: faker.name.fullName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-      role: "user",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    })
-   }
-   await queryInterface.bulkInsert('users', data, {})
+  //   */
+  //  let data = []
+  //  let amount = 10
+  //  while(amount--){
+  //   data.push({
+  //     uuid: faker.datatype.uuid(),
+  //     name: faker.name.fullName(),
+  //     email: faker.internet.email(),
+  //     password: faker.internet.password(),
+  //     role: "user",
+  //     createdAt: new Date(),
+  //     updatedAt: new Date(),
+  //   })
+  //  }
+  //  await queryInterface.bulkInsert('users', data, {})
    
   },
 
