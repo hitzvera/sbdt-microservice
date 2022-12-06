@@ -21,7 +21,18 @@ const getTransactionByUserId = async(req,res)=>{
     }
 }
 
+const getTransactionByItsId = async(req,res) => {
+    const transactionId = req.params.transactionId
+    try{
+        const transaction = await Transaction.findOne({where: {id: transactionId}})
+        return res.json(transaction)
+    } catch(error) {
+        console.log(error)
+        return res.status(500).json({error: true, error})
+    }
+}
 module.exports = {
     getAllTransactions,
-    getTransactionByUserId
+    getTransactionByUserId,
+    getTransactionByItsId
 }

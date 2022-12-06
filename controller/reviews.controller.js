@@ -42,7 +42,7 @@ const editReview = async(req,res) => {
                 where: {id: reviewId}
             }
         )
-        if(isUpdated[0] === 1) return res.json({error: false, message: 'item is updated'})
+        if(isUpdated[0] === 1) return res.json({error: false, message: 'item is updated', isUpdated})
         return res.json({error: false, message: 'nothing is updated'})
     } catch(error){
         console.log(error)

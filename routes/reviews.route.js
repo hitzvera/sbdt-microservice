@@ -5,5 +5,6 @@ reviewsRouter = Router()
 
 reviewsRouter.get('/', reviewsController.getAllReviews)
 reviewsRouter.post('/', reviewsController.addReview)
+reviewsRouter.put('/:reviewId', reviewsController.editReview)
 
 module.exports = reviewsRouter
