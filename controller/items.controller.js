@@ -14,6 +14,18 @@ const getAllItems = async(req,res) => {
         return res.status(500).json({error: true, message: error.message})
     }
 }
+
+const getItemById = async(req,res) => {
+  try{
+      const { itemId } = req.params
+      const item = await Item.findOne({where: {id: parseInt(itemId)}})
+      return res.json({data: item})
+  } catch (error) {
+      console.log(error)
+      return res.status(500).json({error: true, message: error.message})
+  }
+}
+
 const addItem = async(req,res) => {
     const {name, description, price} = req.body
     try{
@@ -60,4 +72,4 @@ const deleteItem = async (req,res) => {
     }
 }
 
-module.exports = {getAllItems, editItem, addItem, deleteItem}
+module.exports = {getAllItems, getItemById, editItem, addItem, deleteItem}

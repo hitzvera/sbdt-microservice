@@ -19,10 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Item.init({
-    uuid: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-    },
     image_url: {
       type: DataTypes.STRING,
       defaultValue: 'https://picsum.photos/500'
@@ -37,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       validate: {
         notEmpty: {msg:"description can't be empty"}
       }
