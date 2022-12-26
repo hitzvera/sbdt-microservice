@@ -25,7 +25,7 @@ const signUp = async(req,res)=>{
     }
 }
 const checkout = async(req,res)=>{
-    const { name, email, total_price, destination, userId, itemId } = req.body
+    const { name, email, total_price, destination, itemId } = req.body
     console.log(itemId)
     try{
         const newUser = await User.create({
@@ -37,12 +37,16 @@ const checkout = async(req,res)=>{
             status: 'pending',
             destination
         })
-
+        const items = await Item.findAll({
+            where: {id: itemId}
+        })
+        await transaction.addItem(items)
         return res.status(201).json({
             error: false,
             message: 'success create transaction',
             transaction,
-            newUser
+            newUser,
+            items
         })
     } catch(err){
         console.log(err)
