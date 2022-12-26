@@ -16,16 +16,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Transaction.init({
-    uuid: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-    },
     total_price: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     kode_bayar: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
     },
     status: {
