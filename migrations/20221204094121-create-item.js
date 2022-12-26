@@ -9,10 +9,6 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      uuid: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-      },
       image_url: {
         type: DataTypes.STRING,
         defaultValue: "https://picsum.photos/500"
