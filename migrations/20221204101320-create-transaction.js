@@ -10,8 +10,9 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       userId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
+        references: {model: 'users', key: 'id'}
       },
       total_price: {
         type: DataTypes.INTEGER,
