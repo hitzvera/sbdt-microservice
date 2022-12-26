@@ -27,7 +27,8 @@ app.post('/login', async(req,res)=>{
         }
         const accessToken = generateAccessToken(payload)
         const refreshToken = generateRefreshToken(payload)
-        return res.json({accessToken, refreshToken})
+        res.cookie('token', accessToken, {httpOnly: true})
+        return res.json({accessToken, refreshToken, user})
     } catch(error){
         console.log(error)
         return res.status(500).json(error)

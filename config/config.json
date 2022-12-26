@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "akhdanfirdaus",
-    "password": "password",
+    "username": "postgres",
+    "password": "postgre",
     "database": "sbdt_database",
     "host": "127.0.0.1",
     "dialect": "postgres"

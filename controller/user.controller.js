@@ -25,27 +25,34 @@ const signUp = async(req,res)=>{
     }
 }
 const checkout = async(req,res)=>{
-    const { total_price, destination, userId } = req.body
+    const { total_price, destination, userId, itemId } = req.body
+    console.log(itemId)
     try{
         const transaction = await Transaction.create({
             userId,
             total_price,
-            kode_bayar: (new Date()).getTime().toString(36) + Math.random().toString(36).slice(2),
             status: 'pending',
             destination
         })
-        const item = await Item.findAll({
-            where: {id:1}
-        })
-        await transaction.addItem(item)
-        const result = await Transaction.findOne({
-            where: {uuid: transaction.uuid},
-            include: ['items']
-        })
+        // const items = await Item.findAll({
+        //     // itemId is Array
+        //     where: {id: itemId}
+        // })
+        // const user = await User.findOne({
+        //     where: {uuid: userId}
+        // })
+        // await transaction.addItem(items)
+        // await user.addTransaction(transaction)
+        // console.log(transaction)
+        // const result = await Transaction.findOne({
+        //     where: {id: transaction.id},
+        //     include: ['items']
+        // })
+
         return res.status(201).json({
             error: false,
             message: 'success create transaction',
-            result
+            transaction
         })
     } catch(err){
         console.log(err)

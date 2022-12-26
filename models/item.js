@@ -44,7 +44,20 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: {msg: 'price can\'t be empty'}
       }
+    },
+    condition: {
+      type: DataTypes.STRING,
+    },
+    specification: {
+      type: DataTypes.STRING
+    },
+    dimension: {
+      type: DataTypes.STRING
+    },
+    weight: {
+      type: DataTypes.STRING
     }
+
   }, {
     sequelize,
     tableName: 'items',
