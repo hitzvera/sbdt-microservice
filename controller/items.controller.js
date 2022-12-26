@@ -52,7 +52,7 @@ const deleteItem = async (req,res) => {
     const itemId = req.params.itemId
     try{
         const isDeleted = await Item.destroy({where: {id: itemId}})
-        if(isDeleted === 1) return res.status(200).json({error: false, message: 'success delete the item'})
+        if(isDeleted[0] === 1) return res.status(200).json({error: false, message: 'success delete the item'})
         return res.status(404).json({error: false, message: 'item not found'})
     } catch(error) {
         console.log(error)
